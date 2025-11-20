@@ -1,7 +1,8 @@
 import React from 'react'
 import { Users, Map, BookOpen, Sparkles, Swords, ScrollText } from 'lucide-react'
+import CharactersGaze from './CharactersGaze'
 
-function Section({ id, icon: Icon, title, children }) {
+function Section({ id, icon: Icon, title, children, extra }) {
   return (
     <section id={id} className="relative py-16 md:py-24">
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,rgba(56,189,248,0.08),transparent_60%)]" />
@@ -10,9 +11,10 @@ function Section({ id, icon: Icon, title, children }) {
           <div className="mt-1 rounded-xl bg-white/10 border border-white/10 p-2 text-white">
             <Icon className="w-5 h-5" />
           </div>
-          <div>
+          <div className="flex-1">
             <h2 className="text-white text-2xl md:text-3xl font-bold mb-2">{title}</h2>
             <p className="text-white/80 max-w-3xl">{children}</p>
+            {extra}
           </div>
         </div>
       </div>
@@ -27,7 +29,16 @@ export default function InfoSections() {
         Gravity Falls temalı, seçimlere dayalı bir görsel roman. Keşif, karakter ilişkileri ve gizem çözme üzerine kurulu, her seçim farklı sonuçlar doğurur.
       </Section>
 
-      <Section id="characters" icon={Users} title="Karakterler ve Özellikleri">
+      <Section
+        id="characters"
+        icon={Users}
+        title="Karakterler ve Özellikleri"
+        extra={
+          <div className="mt-6">
+            <CharactersGaze />
+          </div>
+        }
+      >
         Ana ve yan karakterlerin kişilik özellikleri, güçleri, ilişkileri ve kişisel hedefleri burada listelenir. Her karakterin geçmişi, bağlı olduğu sırlar ve açığa çıkarılabilir ipuçları ile birlikte verilir.
       </Section>
 
